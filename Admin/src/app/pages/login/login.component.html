@@ -1,0 +1,33 @@
+
+<div class="divElement">
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()" style="width: 450px; border: solid 0.3px; border-radius: 1vh; padding: 10px;">
+       <h1 style="align-content: center; align-items: center; margin-left: 35px;">  ĐĂNG NHẬP HỆ THỐNG </h1>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="userName" placeholder="Tài khoản" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div nz-row class="login-form-margin">
+            <!-- <div nz-col [nzSpan]="12">
+                <label nz-checkbox formControlName="remember">
+                    <span>Nhớ mật khẩu</span>
+                </label>
+            </div> -->
+            <div nz-col [nzSpan]="12">
+                <a class="login-form-forgot">Quên mật khẩu</a>
+            </div>
+        </div>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Đăng nhập</button>
+        hoặc
+        <a>Đăng ký!</a>
+    </form>
+</div>

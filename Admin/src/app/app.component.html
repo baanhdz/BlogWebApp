@@ -1,0 +1,77 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1> Blog Manager</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+
+      <li nz-menu-item  nzIcon="form">
+        <a routerLink="/welcome">
+          <span nz-icon nzType="home"></span>
+          <span> Trang chủ</span>
+        </a>
+      </li>
+      <li nz-menu-item nzIcon="form">
+
+        <a routerLink="/tag">
+          <span nz-icon nzType="book"></span>
+          <span>Danh mục Bài viết</span>
+        </a>
+      </li>
+      <li nz-menu-item nzIcon="book">
+
+        <a routerLink="/news">
+          <span nz-icon nzType="form"></span>
+
+          <span>Bài viết</span>
+
+        </a>
+      </li>
+      <li nz-menu-item nzIcon="form">
+
+        <a routerLink="/users">
+          <span nz-icon nzType="user"></span>
+
+          <span>Tài khoản</span>
+        </a>
+      </li>
+
+      <li nz-menu-item nzIcon="form">
+
+        <a routerLink="/">
+          <span nz-icon nzType="form"></span>
+
+          <span>Thống kê website</span>
+        </a>
+      </li>
+
+      <li nz-menu-item nzIcon="form">
+
+        <a routerLink="/">
+          <span nz-icon nzType="setting"></span>
+
+          <span>Cài đặt website</span>
+        </a>
+      </li>
+
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

@@ -1,0 +1,54 @@
+<div class="section search-result-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="heading">Search: '{{ searchTerm }}'</div>
+      </div>
+    </div>
+    <div class="row posts-entry">
+      <div class="col-lg-8">
+        <div
+          *ngFor="
+            let result of searchResults
+              | paginate
+                : {
+                    itemsPerPage: newSize,
+                    currentPage: page,
+                    totalItems: count
+                  };
+            let i = index
+          "
+          class="blog-entry d-flex blog-entry-search-item"
+        >
+          <a routerLink="/detail/{{ result._id }}" class="img-link me-4">
+            <img [src]="result.picture" alt="Image" class="img-fluid" />
+          </a>
+          <div>
+            <span class="date">{{ result.createdAt }}</span>
+            <h2>
+              <a href="single.html">{{ result.title }}</a>
+            </h2>
+            <p>{{ result.description }}</p>
+            <p>
+              <a
+                routerLink="/detail/{{ result._id }}"
+                class="btn btn-sm btn-outline-primary"
+                >Chi tiết</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="row text-start pt-5 border-top">
+          <div class="col-md-12">
+            <pagination-controls
+              previousLabel="Trở lại"
+              nextLabel="Trang kế"
+              (pageChange)="onNewDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

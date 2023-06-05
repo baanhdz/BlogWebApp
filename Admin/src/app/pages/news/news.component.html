@@ -1,0 +1,55 @@
+<div class="mb-md" style="margin-bottom: 10px;">
+  <input nz-input placeholder="Tiêu đề" [(ngModel)]="param" />
+  <button nz-button [nzType]="'primary'" style="margin-left: 10px;">Lọc</button>
+  <button nz-button style="margin-left: 10px;">Bỏ lọc</button>
+  <button nz-button nzType="primary" style="float: right;"><a routerLink="add" class="nav-link">Thêm mới</a></button>
+</div>
+
+<nz-table #dataTable [nzData]="data" [nzPageSize]="10" [nzScroll]="{y: '400px' }" nsAutoHeightTable nzBordered>
+  <thead>
+    <tr>
+      <th nzAlign="center">Tiêu đề</th>
+      <!-- <th nzAlign="center" >Mô tả</th> -->
+      <th nzWidth="200px" nzAlign="center">Danh mục</th>
+      <th nzAlign="center" nzWidth="200px"> Ngày đăng</th>
+      <th nzAlign="center" nzWidth="200px">Công khai</th>
+      <th nzAlign="center" nzWidth="200px" nzAlign="center"> Tác vụ
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataTable.data">
+      <td>{{ data.title }}</td>
+      <td nzAlign="center">{{ data.tag_id?.tag }}</td>
+      <!-- <td>{{ data.description }}</td> -->
+      <td nzAlign="center">{{ formatDate(data.createdAt) }}</td>
+      <td style="color: green;" nzAlign="center">{{ data.isPublic ? 'Đã công khai' : 'Chưa công khai' }}</td>
+      <td nzAlign="center">
+        <button nz-button nzType="primary"><a routerLink="{{data._id}}" class="nav-link"><span nz-icon nzType="edit" nzTheme="outline"></span></a></button>
+
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button [nzType]="'primary'" nzDanger (click)="delete(data)" style="margin-left: 5px;"><span nz-icon
+            nzType="delete" nzTheme="outline"></span></button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Dữ liệu" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm" class="my-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label nzRequired [nzSpan]="6"> Tên danh mục</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+          <input nz-input name="tag" id="tag" formControlName="tag" required />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Mô tả</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+          <input nz-input name="description" id="description" formControlName="description" required />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

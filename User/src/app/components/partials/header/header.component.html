@@ -1,0 +1,70 @@
+<div>
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    
+    <div class="site-nav">
+        <div class="container">
+            <div class="menu-bg-wrap">
+                <div class="site-navigation">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-2">
+                            <a href="index.html" class="logo m-0 float-start">ITDạo<span class="text-primary">.</span></a>
+                        </div>
+                        <div class="col-8 text-center">
+                            <form action="#" class="search-form d-inline-block d-lg-none">
+                                <input type="text" [(ngModel)]="searchTerm"  [ngModelOptions]="{ standalone: true }" (keyup.enter)="onSearchEnter()" class="form-control" placeholder="Search...">
+                                <span class="bi-search"></span>
+                            </form>
+    
+                            <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
+                                <li class="active"><a routerLink="/">Trang Chủ</a></li>
+                                <li class="has-children">
+                                    <a >Danh sách bài viết</a>
+                                    <ul class="dropdown">
+                                        <!-- list-all công nghệ -->
+                                        <li><a [routerLink]="'/list-all/' + '6467aa0d18a04c0b5795597b'">Công Nghệ</a></li>
+                                        <!-- list-all thủ thuật -->
+                                        <li><a [routerLink]="'/list-all/' + '6469d70119ca9240206d9855'">Thủ Thuật</a></li>
+                                        <!-- list-all setup,build,pc -->
+                                        <li><a [routerLink]="'/list-all/' + '646a00b29e2552aca3bd35fd'">Setup,build PC</a></li>
+                    
+                                        <!-- <li class="has-children">
+                                            <a href="#">Danh sách nhỏ hơn</a>
+                                            <ul class="dropdown">
+                                                
+                                                <li><a href="#">Đời sống</a></li>
+                                                
+                                                <li><a href="#">Kinh tế</a></li>
+                                                
+                                                <li><a href="#">Chính trị </a></li>
+                                            </ul>
+                                        </li> -->
+                                    </ul>
+                                </li>
+                                <li><a routerLink="/about">Giới Thiệu</a></li>
+                                <li><a routerLink="/contact">Liên Hệ</a></li>
+                                <li><a routerLink="/login">Login</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-2 text-end">
+                            <a
+                                class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+                                <span></span>
+                            </a>
+                            <form   action="#" class="search-form d-none d-lg-inline-block">
+                                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm"  [ngModelOptions]="{ standalone: true }" (keyup.enter)="onSearchEnter()" >
+                                <span class="bi-search"></span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

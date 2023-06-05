@@ -1,0 +1,128 @@
+<div class="section search-result-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="heading">Chủ Đề: {{ newsByTag[0].tag_id.tag }}</div>
+      </div>
+    </div>
+    <div class="row posts-entry">
+      <div class="col-lg-8">
+        <div
+          class="blog-entry d-flex blog-entry-search-item"
+          *ngFor="
+            let item of newsByTag
+              | paginate
+                : {
+                    itemsPerPage: newSize,
+                    currentPage: page,
+                    totalItems: count
+                  }
+          "
+        >
+          <a href="single.html" class="img-link me-4">
+            <img [src]="item.picture" alt="Image" class="img-fluid" />
+          </a>
+          <div>
+            <span class="date"
+              >{{item.createdAt}} &bullet;
+              <a routerLink="/list-all/{{ item.tag_id._id }}">{{
+                item.tag_id.tag
+              }}</a></span
+            >
+            <h2>
+              <a href="single.html">{{ item.title }}</a>
+            </h2>
+            <p>{{ item.description }}</p>
+            <p>
+              <a
+                routerLink="/detail/{{ item._id }}"
+                class="btn btn-sm btn-outline-primary"
+                >Chi Tiết</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="row text-start pt-5 border-top">
+          <div class="col-md-12">
+            <pagination-controls
+              previousLabel="Trở lại"
+              nextLabel="Trang kế"
+              (pageChange)="onNewDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 sidebar">
+        <!-- END sidebar-box -->
+        <!-- <div class="sidebar-box">
+          <h3 class="heading">Popular Posts</h3>
+          <div class="post-entry-sidebar">
+            <ul>
+              <li>
+                <a href="">
+                  <img
+                    src="images/img_1_sq.jpg"
+                    alt="Image placeholder"
+                    class="me-4 rounded"
+                  />
+                  <div class="text">
+                    <h4>
+                      There’s a Cool New Way for Men to Wear Socks and Sandals
+                    </h4>
+                    <div class="post-meta">
+                      <span class="mr-2">March 15, 2018 </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img
+                    src="images/img_2_sq.jpg"
+                    alt="Image placeholder"
+                    class="me-4 rounded"
+                  />
+                  <div class="text">
+                    <h4>
+                      There’s a Cool New Way for Men to Wear Socks and Sandals
+                    </h4>
+                    <div class="post-meta">
+                      <span class="mr-2">March 15, 2018 </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img
+                    src="images/img_3_sq.jpg"
+                    alt="Image placeholder"
+                    class="me-4 rounded"
+                  />
+                  <div class="text">
+                    <h4>
+                      There’s a Cool New Way for Men to Wear Socks and Sandals
+                    </h4>
+                    <div class="post-meta">
+                      <span class="mr-2">March 15, 2018 </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+
+        <div class="sidebar-box">
+          <h3 class="heading">Tags</h3>
+          <ul class="tags" *ngFor="let item of tag" >
+            <li><a routerLink="/list-all/{{item._id}}" >{{item.tag}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

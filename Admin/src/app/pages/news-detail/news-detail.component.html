@@ -1,0 +1,62 @@
+<nz-row>
+  <nz-col [nzSpan]="16" style="padding-right: 100px;">
+    <form nz-form [formGroup]="newsForm" (ngSubmit)="profileSave(newsForm.value)" [nzLayout]="'vertical'">
+      <nz-col>
+        <nz-form-item>
+          <nz-form-label nzFor="title" nzRequired>Tiêu đề</nz-form-label>
+          <nz-form-control nzErrorTip="required, must match pattern [-_a-zA-Z0-9]">
+            <input nz-input formControlName="title" id="title" />
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+      <nz-form-item>
+        <nz-form-label nzFor="description" nzRequired> Mô tả</nz-form-label>
+        <nz-form-control>
+          <textarea [nzAutosize]="{ minRows: 3, maxRows: 6 }" nz-input formControlName="description" id="description"
+            placeholder="Mô tả"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzFor="content" nzRequired> Nội dung</nz-form-label>
+        <nz-form-control>
+          <textarea [nzAutosize]="{ minRows: 5, maxRows: 6 }" nz-input formControlName="content" id="content"
+            placeholder="Nội dung"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="tag_id"> Danh mục</nz-form-label>
+        <nz-form-control>
+          <!-- <nz-select [(ngModel)]="dataTag"> -->
+          <nz-select formControlName="tag_id" [(ngModel)]="dataTagUpdate">
+            <nz-option *ngFor="let option of dataTag" [nzLabel]="option.tag" [nzValue]="option._id" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzFor="isPublic">Công khai</nz-form-label>
+        <nz-form-control>
+          <label nz-checkbox formControlName="isPublic" id="isPublic" [(ngModel)]="isPublic"></label>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button [nzType]="'primary'" [disabled]="newsForm.invalid">Lưu dữ liệu</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-col>
+  <nz-col [nzSpan]="8">
+    <h4>Ảnh đại diện</h4>
+    <nz-upload class="avatar-uploader" nzAction="http://localhost:5000/api/file/upload" nzName="file"
+      nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
+      (nzChange)="handleChange($event)">
+      <ng-container *ngIf="!avatarUrl">
+        <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
+        <div class="ant-upload-text">Upload</div>
+      </ng-container>
+      <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+    </nz-upload>
+  </nz-col>
+</nz-row>

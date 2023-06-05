@@ -1,0 +1,18 @@
+<nz-row>
+    <h2> Thống kê bài viết theo danh mục </h2>
+</nz-row>
+<nz-row>
+    <nz-col [nzSpan]="12" style="padding-right: 100px;">
+        <div style="display: block;">
+            <canvas baseChart width="400" height="400" [type]="'line'" 
+            [plugins]="dataChart" [options]="lineChartOptions" [datasets]="lineChartDatasets" [labels]="labels" [legend]="lineChartLegend" >
+            </canvas>
+        </div> 
+
+    </nz-col>
+    <nz-col [nzSpan]="12">
+        <canvas baseChart [type]="'pie'" [datasets]="pieChartDatasets" [labels]="labels"
+            [options]="pieChartOptions" [plugins]="dataChart" [legend]="pieChartLegend">
+        </canvas>
+    </nz-col>
+</nz-row>

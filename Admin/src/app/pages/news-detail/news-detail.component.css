@@ -1,0 +1,9 @@
+:host ::ng-deep .avatar-uploader > .ant-upload {
+  width: 250px;
+  height: 250px;
+}
+
+
+input, textarea, text, select, nz-select{
+  width: 100%;
+}
